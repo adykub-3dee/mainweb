@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R8CGM4SEYE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-R8CGM4SEYE');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#030508">
+
+    <!-- SEO: hobby projekt, nie firemná prezentácia -->
+    <title>Hobby 3D tlač na Liptove | 3Dee.tlač</title>
+    <meta name="description" content="Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody. Kontakt cez telefón, WhatsApp alebo Instagram.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="3Dee.tlač">
+    <link rel="canonical" href="https://3dee.sk/">
+    <link rel="alternate" hreflang="sk-SK" href="https://3dee.sk/">
+    <link rel="alternate" hreflang="x-default" href="https://3dee.sk/">
+
+    <!-- Náhľad pri zdieľaní odkazu -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="sk_SK">
+    <meta property="og:site_name" content="3Dee.tlač">
+    <meta property="og:title" content="Hobby 3D tlač na Liptove | 3Dee.tlač">
+    <meta property="og:description" content="Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody.">
+    <meta property="og:url" content="https://3dee.sk/">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Hobby 3D tlač na Liptove | 3Dee.tlač">
+    <meta name="twitter:description" content="Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody.">
+
+    <!-- Štruktúrované dáta opisujú web ako hobby projekt, nie firmu -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://3dee.sk/#website",
+          "url": "https://3dee.sk/",
+          "name": "3Dee.tlač",
+          "alternateName": "3Dee – hobby 3D tlač na Liptove",
+          "description": "Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody.",
+          "inLanguage": "sk-SK",
+          "sameAs": [
+            "https://instagram.com/3dee.tlac"
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://3dee.sk/#webpage",
+          "url": "https://3dee.sk/",
+          "name": "Hobby 3D tlač na Liptove | 3Dee.tlač",
+          "description": "Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody.",
+          "isPartOf": {
+            "@id": "https://3dee.sk/#website"
+          },
+          "about": {
+            "@type": "Thing",
+            "name": "3D tlač"
+          },
+          "spatialCoverage": {
+            "@type": "Place",
+            "name": "Liptov, Slovensko"
+          },
+          "inLanguage": "sk-SK"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #030508;
+            --bg-soft: #090d13;
+            --text-main: #ffffff;
+            --text-sub: #98a1ad;
+            --primary: #00e1ff;
+            --secondary: #bd00ff;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(8, 13, 20, 0.62);
+            --font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --mx: 50%;
+            --my: 40%;
+            --tilt-x: 0deg;
+            --tilt-y: 0deg;
+            --ambient-cyan-x: 0px;
+            --ambient-cyan-y: 0px;
+            --ambient-magenta-x: 0px;
+            --ambient-magenta-y: 0px;
+            --grid-x: 0px;
+            --grid-y: 0px;
+            --floor-x: 0px;
+            --floor-y: 0px;
+            --object-x: 0px;
+            --object-y: 0px;
+            --object-rx: 62deg;
+            --object-rz: -2deg;
+            --head-x: 0px;
+            --head-y: 0px;
+            --hero-x: 0px;
+            --hero-y: 0px;
+            --hero-rx: 0deg;
+            --hero-ry: 0deg;
+            --card-x: 0px;
+            --card-y: 0px;
+            --card-rx: 0deg;
+            --card-ry: 0deg;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            background: var(--bg);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100svh;
+            overflow-x: hidden;
+            font-family: var(--font-stack);
+            color: var(--text-main);
+            background:
+                radial-gradient(circle at var(--mx) var(--my), rgba(0, 225, 255, 0.13), transparent 26rem),
+                radial-gradient(circle at 8% 8%, rgba(0, 225, 255, 0.20), transparent 31rem),
+                radial-gradient(circle at 92% 92%, rgba(189, 0, 255, 0.21), transparent 33rem),
+                linear-gradient(145deg, #06090e 0%, #020305 48%, #07040b 100%);
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .page-shell {
+            position: relative;
+            isolation: isolate;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: grid;
+            grid-template-rows: minmax(0, 1fr) auto;
+            place-items: center;
+            padding: clamp(24px, 4vw, 56px) 20px max(28px, env(safe-area-inset-bottom));
+            overflow: hidden;
+            perspective: 1200px;
+        }
+
+        .ambient,
+        .grid-overlay,
+        .floor-grid,
+        .print-field,
+        .noise,
+        .scanline {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .ambient {
+            z-index: -7;
+            overflow: hidden;
+        }
+
+        .ambient::before,
+        .ambient::after {
+            content: '';
+            position: absolute;
+            width: min(48vw, 670px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            filter: blur(95px);
+            opacity: 0.18;
+            will-change: transform;
+        }
+
+        .ambient::before {
+            left: -14%;
+            top: -22%;
+            background: var(--primary);
+            transform: translate3d(var(--ambient-cyan-x), var(--ambient-cyan-y), 0);
+        }
+
+        .ambient::after {
+            right: -16%;
+            bottom: -28%;
+            background: var(--secondary);
+            transform: translate3d(var(--ambient-magenta-x), var(--ambient-magenta-y), 0);
+        }
+
+        .grid-overlay {
+            z-index: -6;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+            background-size: clamp(38px, 5vw, 68px) clamp(38px, 5vw, 68px);
+            opacity: 0.52;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 78%);
+            transform: translate3d(var(--grid-x), var(--grid-y), 0) scale(1.05);
+        }
+
+        .floor-grid {
+            z-index: -5;
+            top: 50%;
+            height: 70%;
+            background-image:
+                linear-gradient(rgba(0,225,255,0.10) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,225,255,0.09) 1px, transparent 1px);
+            background-size: 58px 38px;
+            transform-origin: 50% 0;
+            transform: perspective(700px) rotateX(68deg) translateY(8%) translate3d(var(--floor-x), var(--floor-y), 0);
+            opacity: 0.42;
+            mask-image: linear-gradient(to bottom, black, transparent 82%);
+        }
+
+        .noise {
+            z-index: 20;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+            mix-blend-mode: soft-light;
+        }
+
+        .scanline {
+            z-index: -1;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,225,255,0.06) 49%, rgba(0,225,255,0.18) 50%, rgba(0,225,255,0.06) 51%, transparent 100%);
+            height: 22%;
+            top: -24%;
+            animation: scan 9s linear infinite;
+            opacity: 0.5;
+        }
+
+        .print-field {
+            z-index: -3;
+            display: grid;
+            place-items: center;
+            transform-style: preserve-3d;
+        }
+
+        .printed-object {
+            position: absolute;
+            top: 43%;
+            width: clamp(230px, 36vw, 510px);
+            aspect-ratio: 1.25;
+            opacity: 0.62;
+            transform-style: preserve-3d;
+            transform:
+                translate3d(var(--object-x), var(--object-y), -80px)
+                rotateX(var(--object-rx))
+                rotateZ(var(--object-rz));
+        }
+
+        .printed-object::before,
+        .printed-object::after {
+            content: '';
+            position: absolute;
+            inset: 9% 12%;
+            border-radius: 23% 44% 28% 41%;
+            border: 1px solid rgba(0,225,255,0.22);
+            box-shadow:
+                0 0 30px rgba(0,225,255,0.08),
+                inset 0 0 25px rgba(189,0,255,0.06);
+        }
+
+        .printed-object::after {
+            inset: 18% 20%;
+            border-color: rgba(189,0,255,0.19);
+            transform: rotate(8deg);
+        }
+
+        .layer {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            top: 13%;
+            background: linear-gradient(90deg, transparent, rgba(0,225,255,0.16) 10%, rgba(255,255,255,0.38) 50%, rgba(189,0,255,0.16) 90%, transparent);
+            box-shadow: 0 0 10px rgba(0,225,255,0.16);
+            transform: scaleX(0.72);
+            opacity: 0.18;
+            animation: layerPulse 4.2s ease-in-out infinite;
+        }
+
+        .printer-head {
+            position: absolute;
+            top: clamp(26px, 8vh, 82px);
+            left: 50%;
+            width: clamp(58px, 7vw, 86px);
+            height: 42px;
+            z-index: -2;
+            transform: translateX(-50%) translate3d(var(--head-x), var(--head-y), 0);
+            opacity: 0.72;
+        }
+
+        .printer-head::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 12px;
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 8px 8px 4px 4px;
+            background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,225,255,0.04));
+            box-shadow: 0 0 28px rgba(0,225,255,0.14);
+        }
+
+        .printer-head::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 12px;
+            height: 15px;
+            clip-path: polygon(12% 0, 88% 0, 100% 55%, 62% 100%, 38% 100%, 0 55%);
+            background: linear-gradient(#dce7ec, #76818b);
+            transform: translateX(-50%);
+            filter: drop-shadow(0 5px 8px rgba(0,225,255,0.35));
+        }
+
+        .filament {
+            position: absolute;
+            top: calc(clamp(26px, 8vh, 82px) + 42px);
+            left: 50%;
+            width: 1px;
+            height: clamp(75px, 12vh, 135px);
+            z-index: -3;
+            background: linear-gradient(to bottom, var(--primary), rgba(0,225,255,0.03));
+            box-shadow: 0 0 10px rgba(0,225,255,0.55);
+            transform: translateX(-50%) translate3d(var(--head-x), var(--head-y), 0);
+            transform-origin: top;
+            animation: filamentFlow 1.4s ease-in-out infinite;
+            opacity: 0.55;
+        }
+
+        .main-hero {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            align-self: stretch;
+            min-height: 320px;
+            padding: clamp(46px, 9vh, 98px) 12px clamp(34px, 7vh, 70px);
+            transform-style: preserve-3d;
+            will-change: transform;
+            transform:
+                translate3d(var(--hero-x), var(--hero-y), 0)
+                rotateX(var(--hero-rx))
+                rotateY(var(--hero-ry));
+            transition: transform 140ms linear;
+        }
+
+        .brand-wrap {
+            position: relative;
+            display: grid;
+            place-items: center;
+            transform-style: preserve-3d;
+        }
+
+        .brand-wrap::before {
+            content: '';
+            position: absolute;
+            width: min(76vw, 720px);
+            aspect-ratio: 2.2;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(0,225,255,0.10), rgba(189,0,255,0.035) 42%, transparent 70%);
+            filter: blur(15px);
+            transform: translateZ(-50px);
+        }
+
+        .brand-name {
+            position: relative;
+            left: -0.36em;
+            margin: 0 0 clamp(18px, 2.3vw, 28px);
+            display: inline-block;
+            text-align: left;
+            font-size: clamp(4rem, 11.4vw, 8.4rem);
+            font-weight: 900;
+            line-height: 0.82;
+            letter-spacing: -0.065em;
+            text-transform: uppercase;
+            background: linear-gradient(110deg, #ffffff 10%, #8d98a4 32%, #ffffff 48%, #a8b1bb 63%, #ffffff 83%);
+            background-size: 220% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter:
+                drop-shadow(0 0 18px rgba(255,255,255,0.16))
+                drop-shadow(0 22px 38px rgba(0,0,0,0.62));
+            transform: translateZ(78px);
+            animation: metallicShine 7s ease-in-out infinite;
+        }
+
+        .indent {
+            display: inline-block;
+            margin-left: 1.5em;
+        }
+
+        .brand-sub {
+            width: 100%;
+            margin: 0;
+            color: var(--text-sub);
+            font-size: clamp(0.68rem, 1.2vw, 0.84rem);
+            font-weight: 400;
+            letter-spacing: clamp(0.22em, 0.6vw, 0.42em);
+            line-height: 1.5;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 16px rgba(0,225,255,0.16);
+            transform: translateZ(42px);
+        }
+
+        .contact-card {
+            position: relative;
+            z-index: 5;
+            width: min(92%, 440px);
+            margin: 0;
+            padding: clamp(20px, 3vw, 28px);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid transparent;
+            border-radius: 26px;
+            background:
+                linear-gradient(var(--glass), var(--glass)) padding-box,
+                linear-gradient(125deg, rgba(255,255,255,0.18), rgba(0,225,255,0.25), rgba(189,0,255,0.22), rgba(255,255,255,0.08)) border-box;
+            box-shadow:
+                0 24px 70px rgba(0,0,0,0.55),
+                inset 0 1px 0 rgba(255,255,255,0.06),
+                0 0 45px rgba(0,225,255,0.05);
+            backdrop-filter: blur(24px) saturate(140%);
+            -webkit-backdrop-filter: blur(24px) saturate(140%);
+            transform-style: preserve-3d;
+            transform: translate3d(var(--card-x), var(--card-y), 0) rotateX(var(--card-rx)) rotateY(var(--card-ry));
+            transition: transform 180ms ease-out, box-shadow 300ms ease, border-color 300ms ease;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            z-index: -1;
+            background: radial-gradient(circle at var(--mx) var(--my), rgba(0,225,255,0.18), transparent 36%);
+            opacity: 0.75;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.62), transparent);
+            opacity: 0.55;
+        }
+
+        .contact-title {
+            display: block;
+            margin-bottom: 13px;
+            color: var(--primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .phone {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 22px;
+            color: var(--text-main);
+            font-size: clamp(1.35rem, 4vw, 1.65rem);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            transition: color 220ms ease, text-shadow 220ms ease, transform 220ms ease;
+        }
+
+        .phone::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            transform: scaleX(0.45);
+            opacity: 0.52;
+            transition: transform 220ms ease, opacity 220ms ease;
+        }
+
+        .phone:hover,
+        .phone:focus-visible {
+            color: #ffffff;
+            text-shadow: 0 0 18px rgba(0,225,255,0.45);
+            transform: translateY(-1px);
+        }
+
+        .phone:hover::after,
+        .phone:focus-visible::after {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .contact-btn {
+            position: relative;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 14px 15px;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            transition: transform 220ms cubic-bezier(.2,.8,.2,1), border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.13) 45%, transparent 70%);
+            transform: translateX(-130%);
+            transition: transform 560ms cubic-bezier(.2,.8,.2,1);
+        }
+
+        .contact-btn:hover,
+        .contact-btn:focus-visible,
+        .contact-btn:active {
+            transform: translateY(-3px);
+            border-color: rgba(0,225,255,0.34);
+            background: linear-gradient(135deg, rgba(0,225,255,0.11), rgba(189,0,255,0.06));
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25), 0 0 22px rgba(0,225,255,0.08);
+        }
+
+        .contact-btn:hover::before,
+        .contact-btn:focus-visible::before {
+            transform: translateX(130%);
+        }
+
+        .contact-btn:focus-visible,
+        .phone:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        @keyframes metallicShine {
+            0%, 18% { background-position: 100% 50%; }
+            50%, 68% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes scan {
+            from { transform: translateY(0); }
+            to { transform: translateY(570%); }
+        }
+
+        @keyframes layerPulse {
+            0%, 100% { filter: brightness(0.8); }
+            50% { filter: brightness(1.45); }
+        }
+
+        @keyframes filamentFlow {
+            0%, 100% { opacity: 0.32; transform: translateX(-50%) translate3d(var(--head-x), var(--head-y), 0) scaleY(0.82); }
+            50% { opacity: 0.72; transform: translateX(-50%) translate3d(var(--head-x), var(--head-y), 0) scaleY(1); }
+        }
+
+        @media (max-width: 720px) {
+            .page-shell {
+                padding-inline: 14px;
+                padding-top: max(18px, env(safe-area-inset-top));
+            }
+
+            .main-hero {
+                min-height: 290px;
+                padding-top: 56px;
+                padding-bottom: 34px;
+            }
+
+            .brand-name {
+                left: -0.30em;
+                font-size: clamp(3.6rem, 17.2vw, 6.2rem);
+            }
+
+            .indent {
+                margin-left: 1.22em;
+            }
+
+            .brand-sub {
+                max-width: 92vw;
+                font-size: 0.66rem;
+                letter-spacing: 0.25em;
+            }
+
+            .printed-object {
+                top: 42%;
+                width: min(88vw, 370px);
+                opacity: 0.45;
+            }
+
+            .printer-head {
+                top: 27px;
+                opacity: 0.56;
+            }
+
+            .filament {
+                top: 69px;
+                height: 74px;
+            }
+
+            .contact-card {
+                width: min(100%, 420px);
+                border-radius: 22px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .page-shell {
+                padding-inline: 10px;
+            }
+
+            .main-hero {
+                min-height: 250px;
+                padding-top: 42px;
+                padding-bottom: 25px;
+            }
+
+            .contact-card {
+                padding: 18px;
+            }
+
+            .contact-btn {
+                min-height: 47px;
+                padding-inline: 10px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-height: 700px) and (min-width: 721px) {
+            .page-shell {
+                grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+                grid-template-rows: 1fr;
+                gap: clamp(20px, 4vw, 60px);
+                padding-block: 24px;
+            }
+
+            .main-hero {
+                min-height: 0;
+                padding: 20px;
+            }
+
+            .brand-name {
+                font-size: clamp(4rem, 10vw, 7.2rem);
+            }
+
+            .printed-object {
+                left: 8%;
+                top: 34%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+
+            .main-hero,
+            .contact-card,
+            .ambient::before,
+            .ambient::after,
+            .grid-overlay,
+            .printed-object,
+            .printer-head,
+            .filament {
+                transform: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell" id="pageShell">
+        <div class="ambient" aria-hidden="true"></div>
+        <div class="grid-overlay" aria-hidden="true"></div>
+        <div class="floor-grid" aria-hidden="true"></div>
+        <div class="scanline" aria-hidden="true"></div>
+        <div class="noise" aria-hidden="true"></div>
+
+        <div class="print-field" aria-hidden="true">
+            <div class="printer-head"></div>
+            <div class="filament"></div>
+            <div class="printed-object" id="printedObject">
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+                <i class="layer"></i><i class="layer"></i>
+            </div>
+        </div>
+
+        <main class="main-hero" id="hero">
+            <div class="brand-wrap">
+                <h1 class="brand-name">3DEE.<br><span class="indent">TLAČ</span></h1>
+                <h2 class="brand-sub">hobby 3d tlač na liptove</h2>
+            </div>
+        </main>
+
+        <footer class="contact-card" id="contactCard">
+            <span class="contact-title">KONTAKT</span>
+            <a href="tel:+421918266290" class="phone" aria-label="Zavolať na číslo 0918 266 290">0918 266 290</a>
+            <div class="btn-group">
+                <a href="https://wa.me/421918266290" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="Kontaktovať 3Dee.tlač cez WhatsApp">WhatsApp</a>
+                <a href="https://instagram.com/3dee.tlac" target="_blank" rel="noopener noreferrer me" class="contact-btn" aria-label="Instagram 3Dee.tlač">Instagram</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const shell = document.getElementById('pageShell');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (!shell || reduceMotion) return;
+
+            document.querySelectorAll('.layer').forEach((layer, index) => {
+                layer.style.top = `${13 + index * 3.05}%`;
+                layer.style.transform = `scaleX(${0.72 + index * 0.008})`;
+                layer.style.opacity = String(Math.min(0.18 + index * 0.02, 0.7));
+                layer.style.animationDelay = `${index * -80}ms`;
+            });
+
+            let targetX = 0;
+            let targetY = 0;
+            let currentX = 0;
+            let currentY = 0;
+            let rafId = null;
+
+            const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+            function render() {
+                currentX += (targetX - currentX) * 0.075;
+                currentY += (targetY - currentY) * 0.075;
+
+                root.style.setProperty('--ambient-cyan-x', `${currentX * -8.4}px`);
+                root.style.setProperty('--ambient-cyan-y', `${currentY * -7}px`);
+                root.style.setProperty('--ambient-magenta-x', `${currentX * 10.8}px`);
+                root.style.setProperty('--ambient-magenta-y', `${currentY * 9}px`);
+                root.style.setProperty('--grid-x', `${currentX * -2.2}px`);
+                root.style.setProperty('--grid-y', `${currentY * -1.8}px`);
+                root.style.setProperty('--floor-x', `${currentX * -2.4}px`);
+                root.style.setProperty('--floor-y', `${currentY * -0.8}px`);
+                root.style.setProperty('--object-x', `${currentX * -4.6}px`);
+                root.style.setProperty('--object-y', `${currentY * -3.8}px`);
+                root.style.setProperty('--object-rx', `${62 + currentY * -0.99}deg`);
+                root.style.setProperty('--object-rz', `${-2 + currentX * 0.9}deg`);
+                root.style.setProperty('--head-x', `${currentX * 7.8}px`);
+                root.style.setProperty('--head-y', `${currentY * 1.5}px`);
+                root.style.setProperty('--hero-x', `${currentX * 12}px`);
+                root.style.setProperty('--hero-y', `${currentY * 10}px`);
+                root.style.setProperty('--hero-rx', `${currentY * -5.5}deg`);
+                root.style.setProperty('--hero-ry', `${currentX * 7.5}deg`);
+                root.style.setProperty('--card-x', `${currentX * -4.1}px`);
+                root.style.setProperty('--card-y', `${currentY * -3.4}px`);
+                root.style.setProperty('--card-rx', `${currentY * 1.21}deg`);
+                root.style.setProperty('--card-ry', `${currentX * -1.65}deg`);
+
+                const moving = Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001;
+                rafId = moving ? requestAnimationFrame(render) : null;
+            }
+
+            function scheduleRender() {
+                if (!rafId) rafId = requestAnimationFrame(render);
+            }
+
+            function updatePointer(clientX, clientY) {
+                const width = window.innerWidth || 1;
+                const height = window.innerHeight || 1;
+                targetX = clamp((clientX / width - 0.5) * 2, -1, 1);
+                targetY = clamp((clientY / height - 0.5) * 2, -1, 1);
+                root.style.setProperty('--mx', `${(clientX / width) * 100}%`);
+                root.style.setProperty('--my', `${(clientY / height) * 100}%`);
+                scheduleRender();
+            }
+
+            window.addEventListener('pointermove', (event) => {
+                if (event.pointerType !== 'touch') updatePointer(event.clientX, event.clientY);
+            }, { passive: true });
+
+            window.addEventListener('touchmove', (event) => {
+                const touch = event.touches[0];
+                if (touch) updatePointer(touch.clientX, touch.clientY);
+            }, { passive: true });
+
+            document.addEventListener('mouseleave', () => {
+                targetX = 0;
+                targetY = 0;
+                root.style.setProperty('--mx', '50%');
+                root.style.setProperty('--my', '40%');
+                scheduleRender();
+            });
+
+            window.addEventListener('blur', () => {
+                targetX = 0;
+                targetY = 0;
+                scheduleRender();
+            });
+        })();
+    </script>
+</body>
+</html>
