@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3Dee · bezpečnejšia minimalistická hobby verzia</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b111b;color:#eff6fc;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:840px;padding:34px 22px 80px;margin:auto}h1{font-size:clamp(26px,4vw,42px);line-height:1.16;margin:12px 0}h2{font-size:19px;margin:25px 0 7px}p{color:#b9c5d1}small{color:#9aaabb}section{padding:24px;border:1px solid #29394d;border-radius:18px;background:#121d2b;margin:22px 0}.eyebrow{color:#59d8ed;letter-spacing:.15em;text-transform:uppercase;font-size:12px;font-weight:800}button,.input-label{border:1px solid #2f748b;border-radius:10px;display:inline-block;padding:12px 18px;margin:8px 8px 8px 0;background:#123746;color:#e7faff;font:600 15px system-ui;cursor:pointer}button:hover,.input-label:hover{background:#205066}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:#08a1b8;color:#001920}.status{padding:13px;border-radius:10px;background:#0b141e;border:1px solid #2e4056;white-space:pre-wrap;color:#d4e2ee}input[type=file]{display:none}code{font-size:.9em;color:#b7efdf}ul{padding-left:23px;color:#c6d4dd}li{margin:5px 0}.warn{color:#f0c987}a{color:#83ddee}details{border-top:1px solid #2b3b4e;margin-top:15px;padding-top:12px}summary{cursor:pointer}#details{white-space:pre-wrap;font:12px/1.5 ui-monospace,monospace;color:#adc0ca}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">3DEE.TLAČ · NÁSTROJ NA ÚPRAVU</div>
+<h1>Minimalistická hobby verzia – LET’S TALK zostáva</h1>
+<p>Tento pomocný nástroj upraví <code>index.html</code> z repozitára <a href="https://github.com/adykub-3dee/mainweb" target="_blank" rel="noopener">adykub-3dee/mainweb</a>. Zachová grafiku, animácie, text LET’S TALK, telefón, WhatsApp aj Instagram. Vyhľadávanie Google zostane zapnuté. Nový súbor si môžeš prezrieť a až potom nahrať do GitHubu.</p>
+<section>
+<h2>1. Načítaj súčasný web</h2>
+<button id="load">Načítať index.html z GitHubu</button>
+<label class="input-label" for="file">Alebo vybrať uložený index.html</label><input type="file" id="file" accept="text/html,.html">
+<div class="status" id="status" role="status">Zdrojový súbor ešte nie je načítaný.</div>
+</section>
+<section>
+<h2>2. Vygeneruj a stiahni nový súbor</h2>
+<button class="primary" id="download" disabled>Stiahnuť upravený index.html</button>
+<p>Po stiahnutí otvor súbor v prehliadači, skontroluj vzhľad a funkčnosť odkazov. Potom nahraď pôvodný <code>index.html</code> vo svojom GitHub repozitári.</p>
+<details><summary>Čo sa zmení?</summary><ul><li>Texty sú osobné a opisujú hobby, nie výrobu „podľa dohody“.</li><li>Pod nadpisom zostane iba krátky podnadpis; nič ďalšie do hlavnej plochy nepribudne.</li><li>V kontaktnom bloku pribudne iba nenápadná jednoriadková poznámka o osobných projektoch.</li><li>Text <strong>LET’S TALK</strong> aj jeho telefónny odkaz ostávajú nezmenené.</li><li>Odstráni sa automatické načítanie Google Analytics a externých Google Fonts, aby web nevytváral zbytočné požiadavky na tretie strany. Písmo sa môže nepatrne líšiť, ostatné efekty a dizajn zostanú zachované.</li><li>SEO ostáva zapnuté. CSS animácie a rozloženie zostávajú zachované.</li></ul></details>
+</section>
+<p class="warn">Upozornenie: Žiadna formulácia stránky negarantuje neprítomnosť kontroly a nelegalizuje pravidelné zákazky. Stránka musí pravdivo opisovať tvoju skutočnú činnosť. Pre prípadné príjmy si veď jednoduchú evidenciu a over ich správny daňový režim.</p>
+</main>
+<script>
+(() => {
+const url='https://raw.githubusercontent.com/adykub-3dee/mainweb/main/index.html';
+const el=id=>document.getElementById(id);
+let original='';
+function status(s){el('status').textContent=s;}
+function replaceOnce(s,rx,value,label){if(!rx.test(s))throw new Error('Nepodarilo sa nájsť: '+label+'. Je možné, že sa medzitým zmenila pôvodná stránka.');return s.replace(rx,value);}
+function edit(s){
+  // Musí ísť o pôvodnú index.html, nie o automaticky uloženú staršiu úpravu.
+  s=replaceOnce(s,/\s*<!-- Google tag \(gtag\.js\) -->[\s\S]*?<\/script>\s*(?=<meta charset="UTF-8">)/,'\n    ','spúšťanie Google Analytics');
+  s=replaceOnce(s,/<!-- SEO: hobby projekt, nie firemná prezentácia -->/,'<!-- Osobný web venovaný 3D tlači a vlastným hobby projektom -->','SEO komentár');
+  s=replaceOnce(s,/<title>Hobby 3D tlač na Liptove \| 3Dee\.tlač<\/title>/,'<title>3Dee.tlač | Moje hobby a 3D tlač na Liptove</title>','titulok');
+  s=replaceOnce(s,/Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody\. Kontakt cez telefón, WhatsApp alebo Instagram\./g,'Osobná stránka o 3D tlači a hobby projektoch na Liptove. Tvorenie vo voľnom čase, vlastné nápady a skúsenosti s 3D tlačou.','hlavný meta popis');
+  s=replaceOnce(s,/Hobby 3D tlač na Liptove – jednoduché 3D výtlačky a drobné projekty podľa dohody\./g,'Osobná stránka venovaná 3D tlači, vlastným nápadom a hobby projektom.','popisy pre zdieľanie a štruktúrované dáta');
+  s=s.replace(/Hobby 3D tlač na Liptove \| 3Dee\.tlač/g,'3Dee.tlač | Moje hobby a 3D tlač na Liptove');
+  s=s.replace('<!-- Štruktúrované dáta opisujú web ako hobby projekt, nie firmu -->','<!-- Údaje opisujú osobnú stránku, nie ponuku komerčných služieb -->');
+  // Kvôli súkromiu návštevníkov minimalizujeme aj požiadavky na Google Fonts.
+  s=replaceOnce(s,/\s*<link rel="preconnect" href="https:\/\/fonts\.googleapis\.com">\s*<link rel="preconnect" href="https:\/\/fonts\.gstatic\.com" crossorigin>\s*<link href="https:\/\/fonts\.googleapis\.com\/css2\?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">/,'\n    <!-- Používajú sa systémové písma bez kontaktovania font serverov. -->','externý font');
+  s=replaceOnce(s,/<h2 class="brand-sub">hobby 3d tlač na liptove<\/h2>/,'<h2 class="brand-sub">moje hobby · 3d tlač na liptove</h2>','hobby podnadpis');
+  // Jemný doplnok v existujúcej karte bez zmeny jej šírky, 3D animácií a tlačidiel.
+  s=replaceOnce(s,/(\s*\.contact-card \{)/,`\n        .hobby-note {
+            margin: 13px 0 0;
+            color: var(--text-sub);
+            opacity: 0.78;
+            font-size: 0.7rem;
+            line-height: 1.45;
+            letter-spacing: 0.015em;
+        }
+$1`,'nenápadný text v kontakte');
+  s=replaceOnce(s,/(<a href="https:\/\/instagram\.com\/3dee\.tlac"[^>]*>Instagram<\/a>\s*<\/div>)(\s*<\/footer>)/,'$1\n            <p class="hobby-note">Osobné hobby projekty a 3D tlač vo voľnom čase.</p>$2','text pod kontaktmi');
+  const required=['href="tel:+421918266290"','>LET\'S TALK</a>','https://wa.me/421918266290','https://instagram.com/3dee.tlac','id="printedObject"','pointermove','class="hobby-note"'];
+  for(const part of required){if(!s.includes(part))throw new Error('Chýba očakávaná časť stránky: '+part);}
+  if(/googletagmanager|gtag\(|fonts\.googleapis\.com|fonts\.gstatic\.com|podľa dohody|ZAVOLAJ MI/.test(s))throw new Error('Ostal pôvodný externý zdroj alebo ponuková formulácia.');
+  const data=s.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/);
+  if(!data)throw new Error('Nenašli sa štruktúrované dáta.');
+  JSON.parse(data[1]);
+  if((s.match(/<a href="tel:\+421918266290"/g)||[]).length!==1)throw new Error('Telefón musí ostať presne raz.');
+  return s;
+}
+function handle(content,origin){try{const result=edit(content);original=content;el('download').disabled=false;status('Zdroj: '+origin+'\nÚprava pripravená. Overené: LET’S TALK, telefón, WhatsApp, Instagram, štruktúrované dáta a animácie.\nPôvodný súbor: '+content.length+' znakov; upravený: '+result.length+' znakov.');}catch(e){original='';el('download').disabled=true;status('Chyba: '+e.message);}}
+el('load').addEventListener('click',async()=>{status('Načítavam verejný súbor z GitHubu…');try{let res=await fetch(url,{cache:'no-store'});if(!res.ok)throw new Error('HTTP '+res.status);handle(await res.text(),url);}catch(err){original='';el('download').disabled=true;status('Automatické načítanie zlyhalo ('+err.message+'). Na GitHube otvor index.html → Raw → Uložiť a vyber ho tlačidlom vyššie.');}});
+el('file').addEventListener('change',async(e)=>{const f=e.target.files&&e.target.files[0];if(f)handle(await f.text(),f.name);});
+el('download').addEventListener('click',()=>{if(!original)return;try{const result=edit(original);const file=new Blob([result],{type:'text/html;charset=utf-8'});const href=URL.createObjectURL(file);const a=document.createElement('a');a.href=href;a.download='index.html';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(href),2000);}catch(e){status('Chyba: '+e.message);}});
+})();
+</script>
+</body></html>
